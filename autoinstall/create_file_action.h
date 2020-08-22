@@ -4,15 +4,15 @@
 
 class CopyFileException : public WindowsException
 {
-	std::string prefix_message();
+	std::string prefix_message()  const;
 };
 
 
 class CreateFileAction : public InstallAction
 {
 private:
-	std::wstring dst_path_;
+	const std::wstring dst_path_;
 public:
-	CreateFileAction(std::wstring src_path, std::wstring dst_path);
+	CreateFileAction(const std::wstring& src_path, const std::wstring& dst_path);
 	~CreateFileAction();
 };

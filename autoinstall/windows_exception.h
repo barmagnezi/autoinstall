@@ -9,6 +9,6 @@ class WindowsException : public std::exception
 public:
 	WindowsException();
 	
-	virtual std::string prefix_message(); // Virtual function to change prefix message of print_error_message
-	void print_error_code_message();
+	virtual std::string prefix_message() const; // Virtual function to change prefix message of print_error_message
+	void print_error_code_message() const;
 };

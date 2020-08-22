@@ -5,7 +5,7 @@
 
 class CreateDirException : public WindowsException
 {
-	std::string prefix_message();
+	std::string prefix_message() const;
 };
 
 class DirAlreadyExists : public std::exception {};
@@ -13,9 +13,9 @@ class DirAlreadyExists : public std::exception {};
 class CreateDirAction : public InstallAction
 {
 private:
-	std::wstring directory_;
+	const std::wstring directory_;
 public:
-	CreateDirAction(std::wstring directory, 
-		LPSECURITY_ATTRIBUTES lpSecurityAttributes=NULL);
+	CreateDirAction(const std::wstring& directory, 
+		const LPSECURITY_ATTRIBUTES& lpSecurityAttributes=NULL);
 	~CreateDirAction();
 };

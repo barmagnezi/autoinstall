@@ -9,9 +9,9 @@
 #define SRC_FILE_INDEX 0
 #define DST_FILE_INDEX 1
 
-Installer::Installer(std::wstring install_dir, std::list<src_dst> files): install_dir_(install_dir), src_dst_files_(files) {}
+Installer::Installer(const std::wstring& install_dir, const std::list<src_dst>& files): install_dir_(install_dir), src_dst_files_(files) {}
 
-bool Installer::install()
+bool Installer::install() const
 {
 	std::list<std::unique_ptr<InstallAction>> installations_actions; // List for all installation changes
 	

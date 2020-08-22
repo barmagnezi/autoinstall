@@ -4,11 +4,11 @@
 #define FAILED_IF_EXISTS TRUE
 
 
-std::string CopyFileException::prefix_message() {
+std::string CopyFileException::prefix_message() const {
 	return "Copy file failed failed with error code:";
 }
 
-CreateFileAction::CreateFileAction(std::wstring src_path, std::wstring dst_path) : dst_path_(dst_path)
+CreateFileAction::CreateFileAction(const std::wstring& src_path, const std::wstring& dst_path) : dst_path_(dst_path)
 {
 	// Copy file will be failed if file already exists in dst_path.
 	if (CopyFile(src_path.c_str(), dst_path_.c_str(), FAILED_IF_EXISTS))

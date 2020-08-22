@@ -2,14 +2,14 @@
 #include <iostream>
 
 
-std::string CreateDirException::prefix_message() {
+std::string CreateDirException::prefix_message() const {
 	return "Create directory failed with error code:";
 }
 
-CreateDirAction::CreateDirAction(std::wstring directory, LPSECURITY_ATTRIBUTES lpSecurityAttributes) : directory_(directory)
+CreateDirAction::CreateDirAction(const std::wstring& directory,
+	const LPSECURITY_ATTRIBUTES& lpSecurityAttributes) : directory_(directory)
 {
-	if (CreateDirectory(directory_.c_str(
-), lpSecurityAttributes))
+	if (CreateDirectory(directory_.c_str(), lpSecurityAttributes))
 	{
 		std::wcout << L"Create " << directory_ << L"." << std::endl;
 	}
