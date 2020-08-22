@@ -17,7 +17,6 @@ class DirAlreadyExists : public std::exception {};
 class CreateDirAction : public InstallAction
 {
 private:
-	bool dir_created_ = false;
 	std::wstring directory_;
 public:
 	CreateDirAction(std::wstring directory, 

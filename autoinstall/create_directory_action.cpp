@@ -14,7 +14,6 @@ CreateDirAction::CreateDirAction(std::wstring directory, LPSECURITY_ATTRIBUTES l
 ), lpSecurityAttributes))
 	{
 		std::wcout << L"Create " << directory_ << L"." << std::endl;
-		dir_created_ = true;
 	}
 	else if (ERROR_ALREADY_EXISTS == GetLastError())
 	{
@@ -29,8 +28,7 @@ CreateDirAction::CreateDirAction(std::wstring directory, LPSECURITY_ATTRIBUTES l
 
 CreateDirAction::~CreateDirAction()
 {
-	 std::cout << std::uncaught_exception() << std::endl;
-	if (dir_created_ && !is_install_success())
+	if (!is_install_success())
 	{
 		if (!RemoveDirectory(directory_.c_str()))
 		{
