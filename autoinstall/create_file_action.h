@@ -2,8 +2,6 @@
 #include "install_action.h"
 #include "windows_exception.h"
 
-#include <string>
-
 class CopyFileException : public WindowsException
 {
 	std::string prefix_message();

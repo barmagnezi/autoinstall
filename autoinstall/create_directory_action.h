@@ -1,8 +1,4 @@
 #pragma once
-
-#include <string>
-#include <Windows.h>
-
 #include "install_action.h"
 #include "windows_exception.h"
 

@@ -1,4 +1,5 @@
 #include "windows_exception.h"
+#include <iostream>
 
 std::string WindowsException::prefix_message() {
 	return "Generic windows error with code:";

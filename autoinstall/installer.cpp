@@ -1,9 +1,10 @@
-#include <iostream>
-#include <filesystem>
 #include "installer.h"
 #include "windows_exception.h"
 #include "create_file_action.h"
 #include "create_directory_action.h"
+
+#include <memory>
+#include <iostream>
 
 #define SRC_FILE_INDEX 0
 #define DST_FILE_INDEX 1

@@ -1,5 +1,4 @@
 #include "create_file_action.h"
-#include <Windows.h>
 #include <iostream>
 
 #define FAILED_IF_EXISTS TRUE

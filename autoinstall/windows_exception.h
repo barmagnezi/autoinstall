@@ -1,10 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <string>
-#include <iostream>
 #include <exception>
-#include <sstream>
-#include <string>
 
 class WindowsException : public std::exception
 {

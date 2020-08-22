@@ -1,9 +1,9 @@
 #pragma once
+#include "install_action.h"
+
 #include <list>
 #include <tuple>
-#include <string>
-#include <memory>
-#include "install_action.h"
+
 
 typedef std::tuple<std::wstring, std::wstring> src_dst;
 
