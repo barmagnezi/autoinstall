@@ -6,10 +6,16 @@ std::string CreateDirException::prefix_message() const {
 	return "Create directory failed with error code:";
 }
 
-CreateDirAction::CreateDirAction(const std::wstring& directory,
-	const LPSECURITY_ATTRIBUTES& lpSecurityAttributes) : directory_(directory)
+/**
+ * Constructor will create directory at directory.
+ * If directory already exists DirAlreadyExists exception will be raised.
+ * If there is some "windows" problem to create directory CreateDirException exception will be raised.
+*/
+CreateDirAction::CreateDirAction(const std::wstring& directory, //path to directory
+	const LPSECURITY_ATTRIBUTES& lp_security_attributes // security attributes object for CreateDirectory WINAPI
+) : directory_(directory)
 {
-	if (CreateDirectory(directory_.c_str(), lpSecurityAttributes))
+	if (CreateDirectory(directory_.c_str(), lp_security_attributes))
 	{
 		std::wcout << L"Create " << directory_ << L"." << std::endl;
 	}
@@ -24,6 +30,10 @@ CreateDirAction::CreateDirAction(const std::wstring& directory,
 	}	
 }
 
+/**
+* Destructor will delete directory if installation failed.
+* If there is some "windows" problem to delete directory, the function will write log and continue.
+*/
 CreateDirAction::~CreateDirAction()
 {
 	if (!is_install_success())

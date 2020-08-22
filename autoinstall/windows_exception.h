@@ -5,6 +5,7 @@
 
 class WindowsException : public std::exception
 {
+private:
 	DWORD windows_error_code_;
 public:
 	WindowsException();

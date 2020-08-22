@@ -9,14 +9,16 @@
 #define SRC_FILE_INDEX 0
 #define DST_FILE_INDEX 1
 
-Installer::Installer(const std::wstring& install_dir, const std::list<src_dst>& files): install_dir_(install_dir), src_dst_files_(files) {}
+Installer::Installer(const std::wstring& install_dir, // Destination path to installation
+	const std::list<src_dst>& files // list of tuples of pathes (full source path, relative path in destination path)
+): install_dir_(install_dir), src_dst_files_(files) {}
 
 bool Installer::install() const
 {
-	std::list<std::unique_ptr<InstallAction>> installations_actions; // List for all installation changes
+	std::list<std::unique_ptr<InstallAction>> installations_actions; // List of all installation changes
 	
 	try{
-		// Creating dest directory if requried
+		// Creating destination directory if requried
 		try {
 			installations_actions.push_front(std::make_unique<CreateDirAction>(install_dir_));
 		}
@@ -25,7 +27,7 @@ bool Installer::install() const
 			std::wcout << L"Directory  " << install_dir_ << L" already exists, skip." << std::endl;
 		}
 
-		// copy all files to dest folder
+		// Copy all files to dest folder
 		for (auto& src_dst : src_dst_files_)
 		{
 			
@@ -41,7 +43,10 @@ bool Installer::install() const
 		e.print_error_code_message();
 		return false;
 	}
+
+	// Update all installations actions that install success
 	for (auto& action : installations_actions) { action->update_install_success(); }
+
 	std::cout << "Installation success!" << std::endl;
 	return true;
 }
