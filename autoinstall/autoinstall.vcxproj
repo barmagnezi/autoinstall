@@ -146,6 +146,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="create_directory_action.cpp" />
+    <ClCompile Include="create_file_action.cpp" />
+    <ClCompile Include="installer.cpp" />
+    <ClCompile Include="install_action.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="windows_exception.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="create_directory_action.h" />
+    <ClInclude Include="create_file_action.h" />
+    <ClInclude Include="installer.h" />
+    <ClInclude Include="install_action.h" />
+    <ClInclude Include="windows_exception.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
